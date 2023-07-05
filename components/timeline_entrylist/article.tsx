@@ -23,19 +23,19 @@ function Article({articleInitial, handlerLoading, article_tab}: any): JSX.Elemen
             let advertisement
             if (article_tab == 1) {
                 advertisement = await axios.get(
-                    `http://101.42.229.5:1337/api/articles?${bignav == undefined ? "" : "filters[article_type_tabs][id]="}${bignav}&${smallnav == undefined ? "" : "filters[tags][id]="}${smallnav}&pagination[page]=${page1}&pagination[pageSize]=5&populate=*`
+                    `http://:1337/api/articles?${bignav == undefined ? "" : "filters[article_type_tabs][id]="}${bignav}&${smallnav == undefined ? "" : "filters[tags][id]="}${smallnav}&pagination[page]=${page1}&pagination[pageSize]=5&populate=*`
                 );
                 setPage1(page1 + 1)
             }
             if (article_tab == 2) {
                 advertisement = await axios.get(
-                    `http://101.42.229.5:1337/api/articles?${bignav == undefined ? "" : "filters[article_type_tabs][id]="}${bignav}&${smallnav == undefined ? "" : "filters[tags][id]="}${smallnav}&sort[0]=updatedAt:desc&pagination[page]=${page2}&pagination[pageSize]=5&populate=*`
+                    `http://:1337/api/articles?${bignav == undefined ? "" : "filters[article_type_tabs][id]="}${bignav}&${smallnav == undefined ? "" : "filters[tags][id]="}${smallnav}&sort[0]=updatedAt:desc&pagination[page]=${page2}&pagination[pageSize]=5&populate=*`
                 );
                 setPage2(page2 + 1)
             }
             if (article_tab == 3) {
                 advertisement = await axios.get(
-                    `http://101.42.229.5:1337/api/articles?${bignav == undefined ? "" : "filters[article_type_tabs][id]="}${bignav}&${smallnav == undefined ? "" : "filters[tags][id]="}${smallnav}&sort[0]=view_count:desc&pagination[page]=${page3}&pagination[pageSize]=5&populate=*`
+                    `http://:1337/api/articles?${bignav == undefined ? "" : "filters[article_type_tabs][id]="}${bignav}&${smallnav == undefined ? "" : "filters[tags][id]="}${smallnav}&sort[0]=view_count:desc&pagination[page]=${page3}&pagination[pageSize]=5&populate=*`
                 );
                 setPage3(page3 + 1)
             }
@@ -61,7 +61,7 @@ function Article({articleInitial, handlerLoading, article_tab}: any): JSX.Elemen
         }
     })
     const goDetail = async (postId) => {
-        const data = axios.get(`http://101.42.229.5:1337/api/articles/${postId}/?populate=*`)
+        const data = axios.get(`http://:1337/api/articles/${postId}/?populate=*`)
         const id = (await data).data.data.attributes.article_detail.data.id
         // router.push(`/article/${id}`)
         //打开新标签页（与掘金一样）
